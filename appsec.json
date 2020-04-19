@@ -1,5 +1,5 @@
      {
-          "image"     : "931968138910.dkr.ecr.ap-south-1.amazonaws.com/springboot-docker:v1.1",
+          "image"     : "931968138910.dkr.ecr.ap-south-1.amazonaws.com/springboot-docker:$IMAGE_TAG",
           "CPU"       : 10,
           "memory"    : 500,
           "essential" : true,
