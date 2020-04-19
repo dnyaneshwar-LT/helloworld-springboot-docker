@@ -9,6 +9,7 @@ phases:
       - REPOSITORY_URI=931968138910.dkr.ecr.ap-south-1.amazonaws.com/springboot-docker
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
       - IMAGE_TAG=${COMMIT_HASH:=latest}
+      - AWS_DEFAULT_REGION=ap-south-1
   build:
     commands:
       - echo Build started on `date`
