@@ -28,10 +28,3 @@ phases:
 artifacts:
     files: imagedefinitions.json
 
-          "name"      : "spring-boot-helloworld",
-          "portMappings": [
-            {
-                "containerPort": 8080,
-                "hostPort": 80
-            }
-        ]
