@@ -1,0 +1,13 @@
+     {
+          "image"     : "931968138910.dkr.ecr.ap-south-1.amazonaws.com/springboot-docker:v1.1",
+          "CPU"       : 10,
+          "memory"    : 500,
+          "essential" : true,
+          "name"      : "spring-boot-helloworld",
+          "portMappings": [
+            {
+                "containerPort": 8080,
+                "hostPort": 80
+            }
+        ]
+      }
