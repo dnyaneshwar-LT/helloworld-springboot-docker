@@ -23,7 +23,15 @@ phases:
       - docker push $REPOSITORY_URI:latest
       - docker push $REPOSITORY_URI:$IMAGE_TAG
       - echo Writing image definitions file...
-      - printf '[{"name":"spring-boot-helloworld","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
+      - printf '[{"image": "%s","CPU": 10,"memory": 500,"essential": true,"name": "spring-boot-helloworld","portMappings": [{"containerPort": 8080,"hostPort": 80}]}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
       - cat imagedefinitions.json
 artifacts:
     files: imagedefinitions.json
+
+          "name"      : "spring-boot-helloworld",
+          "portMappings": [
+            {
+                "containerPort": 8080,
+                "hostPort": 80
+            }
+        ]
