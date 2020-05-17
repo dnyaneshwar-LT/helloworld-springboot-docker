@@ -26,5 +26,10 @@ pipeline{
         sh "docker push 52.168.49.168:5000/springboot:v${env.BUILD_NUMBER}"
         }
       }
+    stage('Deploy to Production') {
+      steps{
+        sh 'ssh -i ubuntu@52.168.49.168 "docker run -itd -p 4001:8080 52.168.49.168:5000/springboot:v${env.BUILD_NUMBER}"' 
+        }
+      }
     }
   }
