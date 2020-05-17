@@ -28,11 +28,20 @@ pipeline{
       }
     stage('Deploy to Production') {
       steps{
-        script {
-          try {
-              sh "ssh ubuntu@52.168.49.168 'docker stop springboot-demo'"
-              sh "ssh ubuntu@52.168.49.168 'docker rm springboot-demo'"
-          } finally sh "ssh ubuntu@52.168.49.168 'docker run -itd --name springboot-demo -p 4001:8080 52.168.49.168:5000/springboot:v${env.BUILD_NUMBER}'"
+       script {
+        try {
+            sh "sudo docker stop springboot-demo"
+        } catch (err) {
+            echo err.getMessage()
+            echo "Error detected, but we will continue."
+        }
+        try {
+            sh "sudo docker rm springboot-demo"
+        } catch (err) {
+            echo err.getMessage()
+            echo "Error detected, but we will continue."
+        }
+        sh "ssh ubuntu@52.168.49.168 'docker run -itd --name springboot-demo -p 4001:8080 52.168.49.168:5000/springboot:v${env.BUILD_NUMBER}'"
           }
         }
       }
