@@ -20,11 +20,13 @@ pipeline{
         }
       }
     stage('Build Docker Image and publish'){
-      sh'''
-      docker build -t 40.112.53.152:5000/springboot:v${env.BUILD_NUMER}
-      docker login -u admin -p admin 40.112.53.152:5000
-      docker push 40.112.53.152:5000/springboot:v${env.BUILD_NUMER}
-      '''
+      steps {
+        sh'''
+        docker build -t 40.112.53.152:5000/springboot:v${env.BUILD_NUMER}
+        docker login -u admin -p admin 40.112.53.152:5000
+        docker push 40.112.53.152:5000/springboot:v${env.BUILD_NUMER}
+        '''
+        }
       }
- }
-}
+    }
+  }
